@@ -1,15 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Liste navigieren</title>
+    <style>
+        .element {
+            border-color: black;
+            border: solid;
+            text-align: center;
+        }
+
+        table {
+            font-size: 3rem;
+            text-align: left;
+            margin: 0 auto;
+        }
+        th {
+            font-weight: normal;
+            padding: 1rem;
+        }
+        h3 {
+            text-decoration: underline;
+            font-size: 2rem;
+        }
+    </style>
 </head>
 <body>
     <h1>Listen und Thymeleaf</h1>
     <h2>Durch eine Java-Liste mithilfe von Buttons in Thymeleaf navigieren</h2>
     <p>Um dies zu simulieren ohne jedes einzelne Element neu zu laden oder zusätzliche Frameworks zu nutzen, werden nicht aktive Listenelemente ausgeblendet</p>
 
-    <h1>Hier wird die Liste angezeigt</h1>
+    <h1>Hier wird die Liste angezeigt:</h1>
+    <div th:id="@{Element} + ${element.getName()}" class="element" th:each="element: ${list}">
+        <h3>Listenelement</h3>
+        <table>
+            <tr>
+                <th><b>Name des Elements:</b><th>
+                <th th:text="${element.getName()}"/>
+            </tr>
+            <tr>
+                <th><b>Wert:</b><th>
+                <th th:text="${element.getValue()}"/>
+            </tr>
+        </table>
+    </div>
 
 </body>
 </html>
