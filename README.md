@@ -28,6 +28,7 @@ https://www.w3schools.com/html/html_id.asp
 
 ## HTML Elemente (nicht) sichtbar machen (Javascript)
 https://stackoverflow.com/questions/9456289/how-to-make-a-div-visible-and-invisible-with-javascript
+-> wird nicht mehr verwendet, stattdessen display = nome bzw display = block, da bei visibility trotzdem der Platz des Objektes belegt bleibt
 
 ## Javascript Funktionsaufruf mit Thymeleaf-Variablen
 https://stackoverflow.com/questions/26526037/javascript-function-call-with-thymeleaf
@@ -35,6 +36,10 @@ https://www.programmersought.com/article/90811610750/
 
 ## Thymeleafe disable Button
 https://stackoverflow.com/questions/52441267/thymeleaf-disabling-a-component/52444010
+http://forum.thymeleaf.org/disabled-fieldsest-td4031330.html
 
 ## Thymeleafe Methode aufrufen mit Parameter
 http://forum.thymeleaf.org/invoking-a-method-on-model-with-parameter-td4026846.html
+
+## HTML Javascript Funktion starten wenn die Seite geladen ist
+https://stackoverflow.com/questions/4842590/how-to-run-a-function-when-the-page-is-loaded
