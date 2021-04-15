@@ -5,35 +5,35 @@
     <title>Liste navigieren</title>
     <style>
         .element {
-            /* display wird auf none, also nicht sichtbar gesetzt. Dies ist ddas einzige, funktionale css-Element */
-            display: none;
-            border-color: black;
-            border: solid;
-            text-align: center;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: auto auto;
-        }
-        .grid-item {
-            font-size: 3rem;
-            text-align: center;
-        }
+        /* display wird auf none, also nicht sichtbar gesetzt. Dies ist das einzige, funktionale css-Element */
+        display: none;
+        border-color: black;
+        border: solid;
+        text-align: center;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    .grid-item {
+        font-size: 3rem;
+        text-align: center;
+    }
 
-        table {
-            font-size: 3rem;
-            text-align: left;
-            margin: 0 auto;
-        }
-        th {
-            font-weight: normal;
-            padding: 1rem;
-        }
-        h3 {
-            text-decoration: underline;
-            font-size: 2rem;
-        }
-    </style>
+    table {
+        font-size: 3rem;
+        text-align: left;
+        margin: 0 auto;
+    }
+    th {
+        font-weight: normal;
+        padding: 1rem;
+    }
+    h3 {
+        text-decoration: underline;
+        font-size: 2rem;
+    }
+</style>
     <script>
         function setVisible(id, visible) {
             // Ändert das style Element "display" entweder zu block (visible = true) oder zu hidden (visible = false)
@@ -63,19 +63,18 @@
         }
 
         function showFirstElement() {
-            // erstes Element sichtbar machen, Start Button verbergen
+            // erstes Element sichtbar machen, wird aufgerufen wenn der HTML-body geladen wurde (onload)
             setVisible('Element0', true);
-            setVisible('StartButton', false);
         }
     </script>
 </head>
-<body>
+<body onload="showFirstElement()">
     <h1>Listen und Thymeleaf</h1>
     <h2>Durch eine Java-Liste mithilfe von Buttons in Thymeleaf navigieren</h2>
     <p>Um dies zu simulieren ohne jedes einzelne Element neu zu laden oder zusätzliche Frameworks zu nutzen, werden nicht aktive Listenelemente ausgeblendet</p>
+    <i>Hier wird das erste Element automatisch angezeigt und Buttons die nichts tun sollen werden deaktiviert</i>
 
     <h1>Hier wird die Liste angezeigt:</h1>
-    <button id="StartButton" onclick="showFirstElement()">SHOW LIST</button>
     <!-- Schleife durchläuft ganze Liste, für jedes Listenelement wird ein div (Klasse: element) erzeugt -->
     <div th:id="@{Element} + ${element.getIndex()}" class="element" th:each="element: ${list}">
         <h3>Listenelement</h3>
@@ -93,9 +92,11 @@
         <br>
         <div class="grid-container">
             <!-- Button für vorheriges Element, Parameter per Thymeleaf übergeben -->
-            <button class="grid-item" th:onclick="|showPreviousListElement('@{Element}${element.getIndex()}','@{Element}${element.getIndex()-1}' )|">Previous</button>
+            <!-- Button wird beim ersten Element als deaktiviert angezeigt -->
+            <button class="grid-item" th:onclick="|showPreviousListElement('@{Element}${element.getIndex()}','@{Element}${element.getIndex()-1}' )|" th:disabled="${element.getIndex() == 0}">Previous</button>
             <!-- Button für nächstes Element, Parameter per Thymeleaf übergeben -->
-            <button class="grid-item" th:onclick="|showNextListElement('@{Element}${element.getIndex()}','@{Element}${element.getIndex()+1}', '@{Element}${list.size()-1}' )|">Next</button>
+            <!-- Button wird beim letzten Element als deaktiviert angezeigt -->
+            <button class="grid-item" th:onclick="|showNextListElement('@{Element}${element.getIndex()}','@{Element}${element.getIndex()+1}', '@{Element}${list.size()-1}' )|" th:disabled="${element.getIndex()} == ${list.size()-1}">Next</button>
         </div>
     </div>
 
