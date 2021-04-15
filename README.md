@@ -5,7 +5,7 @@ Beispiel für Navigation durch eine Liste mithilfe von Buttons (Thymeleaf und Ja
 Auf einer HTML-Seite eine übergebene Liste elementweise mithilfe von Buttons durchgehen
 
 # Links
-## HTML ID Feld, Informationen und in Javascript nutzen
+## HTML ID Feld: Informationen und in Javascript nutzen
 https://www.w3schools.com/html/html_id.asp
 
 ## HTML Elemente (nicht) sichtbar machen (Javascript)
